@@ -16,9 +16,10 @@
     // Dando o resultado dentro da Row
     $row = mysqli_num_rows($result);
     // Se a Row for maior que zero
+    // Roda o códig logado 
     if($row > 0){
-        $_SESSION['username'] = $username;
-        // $_SESSION['levelacc'] = $levelacc;
+        $_SESSION['logado'] = $username || $userpass;
+       
         header('Location: dashboard.php');
         exit();
     } else {

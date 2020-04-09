@@ -1,10 +1,22 @@
+<?php 
+
+require_once "conn.php";
+
+
+// 
+
+
+
+?>
+
+
 <html>
 
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>RECARGABR</title>
+	<title>SOCIAL GRANA</title>
 
 	  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -36,7 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="www.creative-tim.com">RecargaBR</a>
+          <a class="navbar-brand" href="index.php">SocialGrana</a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,13 +61,20 @@
                 <a href="paymentproofs.php" class="btn btn-simple">Provas de Pagamento</a>
             </li>
             <li>
-              <a href="auth/login.php" class="btn btn-simple">Login</a>
+            <?php 
+              //if($username && $userpass == true) {
+               // echo '<a href="auth/dashboard.php"' . 'class="btn btn-simple">' . 'Painel' . '</a>';
+              //} else {
+                echo '<a href="auth/login.php"' . 'class="btn btn-simple">' . 'Login' . '</a>';
+              //}
+            ?>
+              
             </li>
             <li>
-                <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-twitter"></i></a>
+                <a href="www.twitter.com" target="_blank" class="btn btn-simple"><i class="fa fa-twitter"></i></a>
             </li>
             <li>
-                <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-facebook"></i></a>
+                <a href="www.facebook.com" target="_blank" class="btn btn-simple"><i class="fa fa-facebook"></i></a>
             </li>
            </ul>
         </div><!-- /.navbar-collapse -->

@@ -1,9 +1,9 @@
 <?php 
-$_REQUEST['logincredentials'];
+session_start();
+
 require_once "../conn.php";
 
-$points = 'points';
-$_SESSION['points'] = $points;
+
 
 
 ?>
@@ -33,8 +33,8 @@ $_SESSION['points'] = $points;
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="http://recargasbr.xyz" class="simple-text logo-normal">
-          RecargaBR
+        <a href="index.php" class="simple-text logo-normal">
+          SocialGrana
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -63,7 +63,7 @@ $_SESSION['points'] = $points;
           <li class="nav-item">
           <a class="nav-link" href="ads.php">
             <i class="material-icons">public</i>
-            <p>Ver Anúncios</p>
+            <p>Ganhar dinheiro</p>
           </a>
           </li>
 

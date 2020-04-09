@@ -5,25 +5,6 @@ require_once "../conn.php";
 
 $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
 
-  
-    // Levando o usuário para a dashboard
-   
-    
-
-    
-
-    // Strings carregando valores importantes
-   
-
-    // Prevenção de SQL INJECTION
-
-    
-
-    // Checa no DB se existem usuários e senhas compatíveis
-
-    
-
-
 ?>
 
 <!DOCTYPE html>
@@ -63,17 +44,17 @@ $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="recargabr.xyz">RecargaBR</a>
+          <a class="navbar-brand" href="index.php">SocialGrana</a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navigation-example-2">
           <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#" class="btn btn-simple">Suporte técnico</a>
+                <a href="troubleshooting.php" class="btn btn-simple">Suporte técnico</a>
             </li>
             <li>
-                <a href="#" class="btn btn-simple">Financeiro</a>
+                <a href="..invoice/financeiro.php" class="btn btn-simple">Financeiro</a>
             </li>
             <li>
                 <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-twitter"></i></a>

@@ -2,7 +2,7 @@
 session_start();
 require_once "../conn.php";
 
-setcookie('logincredentials', 'username' && 'userpass');
+
 
 ?>
 
@@ -33,8 +33,8 @@ setcookie('logincredentials', 'username' && 'userpass');
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="http://recargasbr.xyz" class="simple-text logo-normal">
-          RecargaBR
+        <a href="index.php" class="simple-text logo-normal">
+          SocialGrana
         </a>
       </div>
 
@@ -119,14 +119,16 @@ setcookie('logincredentials', 'username' && 'userpass');
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
-          <p><?php 
+          <p>
+            <?php 
            $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
-           echo "Bem vindo, seu IP atual é o  " . $ip;
-           ?></p>
+              echo "Bem vindo, seu IP atual é o  " . $ip;
+           ?>
+           </p>
            <h3>Usuário : 
            <?php 
             if(isset($_SESSION['username'])) {
-           echo $_SESSION ['username']; 
+              echo $_SESSION ['username']; 
             }
            
            ?></h3>
