@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require_once "../conn.php";
 
 // include "get_ref.php";
@@ -25,7 +25,7 @@ require_once "../conn.php";
     <div class="wrapper ">
         <div class="sidebar" data-color="orange" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
             <div class="logo">
-            <a href="recargabr.xyz" class="simple-text logo-normal">RECARGABR</a>
+            <a href="recargabr.xyz" class="simple-text logo-normal">Social Grana</a>
             </div>
 
             <div class="sidebar-wrapper">
@@ -54,7 +54,7 @@ require_once "../conn.php";
           <li class="nav-item">
           <a class="nav-link" href="ads.php">
           <i class="material-icons">public</i>
-          <p>Ver Anúncios</p>
+          <p>Ganhar dinheiro</p>
           </a>
           </li>
 
@@ -102,65 +102,95 @@ require_once "../conn.php";
                         <tr>
                         <!-- Table Head start -->
                           <th>ID</th>
-                          <th>Nome de Usuário</th>
+                          <th>Email do Usuário</th>
+                          <th>Bonificação adquirida</th>
                           <th>Data de registro</th>
-                          <th>Quantidade de pontos</th>
-                          <th>Porcentagem adquirida</th>
+                          
+                          
                           
                         </tr>
                       </thead>
                         <tbody>
                           <tr>
                             <th><b>
-                            1
+                            
                             <?php 
-                            // ID do usuário em questão
-                              if(isset($row['id'])) {
-                                echo $row['id'];
-                              }
+                            // ID
+                            // Esse numero não é o id do usuário encontrado na tabela 'users'
+                            $sql = "SELECT * FROM referrals WHERE id = 1";
+                            $result = $conn -> query($sql);
+
+                              if(isset($_SESSION['logado'])) {
+                                if($result ->num_rows > 0){
+                                  while($row = $result ->fetch_assoc()){
+                                    echo $row['id'];
+                                  }
+                                } else { echo " ";}
+                              } 
+                             
+                              
                             ?>
                               </b>
                             </th>
                             <th>
                             <?php 
-                            // Data em que o referido se inscreveu pelo link de afiliado
-                              if(isset($row['name'])){
-                                echo $row['name'];
-                              } else {
-                                echo "qualquer nome";
-                              }
+                              $sql = "SELECT usermail FROM referrals WHERE id = 1";
+                              $result = $conn ->query($sql);
+                            
+                             if(isset($_SESSION['logado']) ){
+                                if($result ->num_rows > 0){
+                                  while($row = $result ->fetch_assoc()){
+                                    echo $row['usermail'];
+                                  }
+                                }
+                              } 
                             ?>
                             
                             </th>
                             <th>
                               <?php 
-                              // Data de registro do usuário
+
+                              $sql = "SELECT ref_date FROM referrals WHERE id = 1";
+                              $result = $conn -> query($sql);
+                              // Bonus
                               // 
                               // 
-                                if(isset($row['registerDate'])) {
-                                  echo $row['registerDate'];
+                                if(isset($_SESSION['logado'])) {
+                                  if($result ->num_rows > 0){
+                                    while($row = $result -> fetch_assoc()){
+                                      echo $row['ref_bonus'];
+                                    }
+                                  }
+                                  
                                 } else {
-                                  echo "00/00/0000";
+                                  echo " ";
                                 }
                               ?>
 
                             </th>
                             <th>
                                 <?php 
-                                // Qt. de pontos
-                                  echo "3500";
+                                $sql = "SELECT ref_bonus FROM referrals WHERE id = 1";
+                                $result = $conn -> query($sql);
+                                // Ref Date
+
+                                if(isset($_SESSION['logado'])) {
+                                  if($result ->num_rows > 0 ){
+                                    while($row = $result -> fetch_assoc()){
+                                    echo $row['ref_date'];
+                                  } 
+                                }
+                              }
                                 ?>
                             </th>
-                            <th>
-                                <?php 
-                                  echo "10%"
-                                ?>
-                            </th>
+                          
                           </tr>
 
                           <tr>
-                            <th>2</th> 
-                            <th>segundo nome</th>
+                            <th></th> 
+                            <th></th>
+                            <th></th> 
+                            <th></th>
                           </tr>
                         </tbody>
                     </table>

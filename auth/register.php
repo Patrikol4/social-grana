@@ -101,7 +101,15 @@ $userpass = "";
 
                                     <input type="password" name="userpass" class="form-control" value="<?php echo $userpass;?>">
                                     <br>
+                                    <label>Seu código de referência (Não é obrigatório)</label>
+
+                                    <input type="text" name="" class="form-control" value="">
+                                    <br>
                                     <div class="g-recaptcha" data-sitekey="6LdSWuQUAAAAABVRvlTwZzEvHQw88Pbykt14jLw6"></div>
+
+
+
+
                                     
                                     <button type="submit" name="reg_user" class="btn btn-fill btn-info btn-block">Criar conta</button>
                                 </form>

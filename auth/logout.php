@@ -1,7 +1,9 @@
-<?php 
+<?php
 
 session_start();
-session_destroy();
-header ('Location: ../index.php');
-exit();
+
+	if(isset($_REQUEST['logout'])) {
+		session_destroy();
+	header ('Location: ../login.php');
+		exit();
 ?>

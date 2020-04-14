@@ -1,5 +1,5 @@
     <?php 
-    session_start();
+   include_once "start_session.php";
     require_once "../conn.php";
     // Se o nome de usuario e a senha estiverem vazios
     // Redireciona para a mesma página.
@@ -25,7 +25,7 @@
     } else {
         // A sessão retornará forbidden e levará o usuario novamente
         // Para a página de login.
-        $_SESSION['forbidden'] = true;
+        $_SESSION['nao_logado'] = true;
         header('Location: login.php');
         exit();
     }

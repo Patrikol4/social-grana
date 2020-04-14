@@ -34,7 +34,7 @@ require_once "../conn.php";
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Ver Anúncios
+    Ganhar dinheiro
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -54,7 +54,7 @@ require_once "../conn.php";
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="http://recargabr.xyz" class="simple-text logo-normal">
-          RECARGABR
+          Social Grana
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -79,7 +79,7 @@ require_once "../conn.php";
           <li class="nav-item active">
             <a class="nav-link" href="ads.php">
               <i class="material-icons">public</i>
-              <p>Ver Anúncios</p>
+              <p>Ganhar Dinheiro</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -110,7 +110,7 @@ require_once "../conn.php";
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Ver Anúncios</a>
+            <a class="navbar-brand" href="javascript:void(0)">Ganhar Dinheiro</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -128,7 +128,9 @@ require_once "../conn.php";
               </div>
             </form>
            
-              
+              <?php 
+                $sql = "SELECT * FROM anuncios" ;
+              ?>
               
             
           </div>
@@ -139,7 +141,7 @@ require_once "../conn.php";
         <div class="container-fluid">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title"><b>Assista a anúncios e ganhe dinheiro!</b></h4>
+              <h4 class="card-title"><b>Seja ativo e ganhe dinheiro todos os dias!</b></h4>
               <p class="card-category">Basta clicar e assistir a todos os anúncios abaixo.
                 
               </p>
@@ -149,7 +151,21 @@ require_once "../conn.php";
                 <div class="col-md-6">
                   <h4 class="card-title"><b>Anúncios Mínimos de R$ 0,01</b></h4>
                   <div class="alert alert-success">
-                    <span>As melhores notícias do Brasil e do Mundo (1)</span>
+                    <span>
+                      <?php 
+                        // $result = $conn->query($sql);
+                      // if(isset($_SESSION['logado'])){
+                          // if($result = ){
+                            // while($row = $result -> fetchassoc()){
+                            //}                         
+                          //}
+                        //}
+                        echo 
+                        "<a href='#'>" .
+                        "As melhores notícias do Brasil e do Mundo (1)" . "<i class='material-icons'>" ."work". "</i>"."</a>";
+                      ?>
+                    
+                    </span>
                   </div>
                   <div class="alert alert-success">
                     <button type="button" class="close">
@@ -162,7 +178,9 @@ require_once "../conn.php";
                     <button type="button" class="close">
                      
                     </button>
-                    <span data-notify="message">Responda essas perguntas </span>
+                    <span data-notify="message">
+                        <?php ?>
+                    Responda essas perguntas </span>
                   </div>
                   <div class="alert alert-success">
                     

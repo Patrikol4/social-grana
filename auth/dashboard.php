@@ -3,7 +3,7 @@ session_start();
 require_once "../conn.php";
 
 
-
+$isLoggedin = $_SESSION['logado'];
 ?>
 
 <!doctype html>
@@ -125,14 +125,19 @@ require_once "../conn.php";
               echo "Bem vindo, seu IP atual é o  " . $ip;
            ?>
            </p>
-           <h3>Usuário : 
+          
            <?php 
-            if(isset($_SESSION['username'])) {
-              echo $_SESSION ['username']; 
+           /* if($isLoggedin == true) {
+              echo $username; 
+            } else {
+              echo "Nada";
             }
-           
-           ?></h3>
+           */
+           ?>
+
+
             <?php 
+            date_default_timezone_set("America/Sao_Paulo");
             setlocale(LC_ALL, "pt-BR", "pt-BR.utf-8", "portuguese");
             echo "<h4>Hoje é " . ucwords (strftime("%A")) . "</h4>";?>
 

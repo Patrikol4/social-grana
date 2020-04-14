@@ -13,6 +13,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
     <link href="css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+
+
+
+    <script>
+                            
+                            function formatPoints() {
+                              var field = document.getElementById('value');
+                              var value = field.value;
+
+                              value = value + '';
+                              value = parseInt(value.replace(/[\'D']+/g, ''));
+                              value = value + '';
+                              value = value.replace(/([0-9]{2})$/g, ",$");
+                              if(value.length > 6){
+                                value = value.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1, $2");
+                              }
+                            }
+
+                          </script>
 </head>
 <body class="dark-edition">
     
@@ -24,8 +43,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="http://recargasbr.xyz" class="simple-text logo-normal">
-          RecargaBR
+        <a href="../index.php" class="simple-text logo-normal">
+          SocialGrana
         </a>
       </div>
 
@@ -55,7 +74,7 @@
           <li class="nav-item">
           <a class="nav-link" href="ads.php">
             <i class="material-icons">public</i>
-            <p>Ver Anúncios</p>
+            <p>Ganhar Dinheiro</p>
           </a>
           </li>
           
@@ -110,20 +129,20 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
-          <p><?php 
-              $sql = "SELECT points FROM users";
-           ?></p>
+          <p>
+            <?php 
+              $sql = "SELECT balance FROM users WHERE id = 1";
+           ?>
+             
+           </p>
            <h3>Fique á vontade para fazer seu saque</h3>
            <h4>Pontos disponíveis : 
-           <?php 
-
-            $result = mysqli_query($conn, $sql);
-
-            $row = mysqli_fetch_array($result);
-
-            if(isset($_SESSION['points'])) {          
-            echo $row['points'];} ?>
-            </h4>
+           <?php $result = $conn->query($sql); if(isset($_SESSION['logado'])) { if($result ->num_rows > 0){
+              while($row = $result ->fetch_assoc()){
+                echo $row['balance'];
+                  }
+                }
+              } else { echo "NaN";} ?> </h4>
 
             
             
@@ -143,20 +162,40 @@
                       </div>
                     <div class="card-body">
                       <h4 class="card-title">Conversão de pontos: </h4>
-                        <p class="card-category">Escolha como gostaria de converter seus pontos </p>
+                        <p class="card-category">Escolha a plataforma de saques e quantos pontos gostaria de converter 
+                          <i class="material-icons">attach_money</i>
+                        </p>
                         <!--Formas de saque / conversão abaixo -->
                         <?php ?>
                       
                       <div class="card-footer">
                         <div class="stats">
+                         
                         
                         </div> <!--Stats Close-->
-                        <button class="btn btn-success btn-block">
+                        <!--
+                        <button class="btn btn-success btn-block" onclick="md.showNotification('top', 'center')">
                         <i class="material-icons">attach_money</i>
-                        <a href="convert_points.php">Converter Pontos</a> <!--Chama a função de converter-->
-                  </button>
-                      </div> <!--Card Footer close-->
+                        <a href="#">Converter Pontos</a> 
+                      <div class="ripple-container"></div>
+                  </button>-->
+                      
 
+                          
+                          <select class="form-control">
+                            <option>MercadoPago</option>
+                            <option>Nubank</option>>
+                          </select>
+                          
+                          <input class="form-control" id="value" type="text" onkeyup="formatPoints();" placeholder="Quantia mínima de retirada : 50 pontos">
+
+                          
+                                                   
+                          
+                      </div> <!--Card Footer close-->
+                      <button class="btn btn-success btn-block">
+                        <i class="material-icons">local_atm</i>
+                      Pedir Saque</button>
                     </div>
 
                   </div>
@@ -172,11 +211,116 @@
                       </div>
                       <div class="card-body">
                         <h4 class="card-title">Histórico de Saques</h4>
+                          
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead class="text-info">
+                                  <tr>
+                                    <th>ID do Pagamento</th>
+                                    <th>Email usado para saque</th>
+                                    <th>Quantia do Saque</th>
+                                    <th>Data do Pedido</th>
+                                    <th>Status</th>
+                                    <th>Pedido via</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>
+
+                                    <?php 
+                                      $sql = "SELECT * FROM withdrawaddr WHERE id = 1";
+                                       $result = $conn->query($sql);
+
+                                       if(isset($_SESSION['logado'])) {
+                                          if($result -> num_rows > 0){
+                                            while($row = $result -> fetch_assoc()){
+                                              echo $row['id'];
+                                            }
+                                          } 
+                                        } else { echo "NaN"; }
+
+                                    ?>
+
+
+                                    </th>
+                                    <th>
+                                      <?php 
+                                        $sql = "SELECT withdrawaddr FROM withdrawrequests WHERE id = 1";
+                                        $result = $conn->query($sql);
+                                          if(isset($_SESSION['logado'])) {
+                                            if($result -> num_rows > 0) {
+                                              while($row = $result -> fetch_assoc()) {
+                                                echo $row['withdrawaddr'];
+                                              }
+                                            } else { echo "Não existem registros a serem mostrados"; //exit();
+                                          }
+                                        } else { echo "NaN" ; }
+                                      ?>
+                                    <!--recebimento@gmail.com-->
+
+                                    </th>
+                                    <th>
+
+                                    R$ 50,00
+
+                                    </th>
+                                    <th>11/04/2020</th>
+                                    <th>
+                                      Finalizado
+                                      <i class="material-icons">
+                                        done_all
+                                      </i>
+                                    </th>
+                                    <th>Nubank</th>
+                                  </tr>
+
+                                  <tr>
+                                    <th>2</th>
+                                    <th>recebimento@gmail.com</th>
+                                    <th>R$ 150,00</th>
+                                    <th>11/04/2020</th>
+                                    <th>
+                                      Em andamento
+                                      <i class="material-icons">schedule</i>
+                                    </th>
+                                    <th>MercadoPago</th>
+                                  </tr>
+
+                                  <tr>
+                                    <th>3</th>
+                                    <th>recebimento@gmail.com</th>
+                                    <th>R$ 300,00</th>
+                                    <th>11/04/2020</th>
+                                    <th>Cancelada pelo administrador
+                                      <i class="material-icons">error_outline</i>
+                                    </th>
+                                    <th>PayPal</th>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+
                           <p class="card-category">
                           
                           Esse é o seu histórico de todos os saques / Conversões </p>
                           
                         <div class="card-footer">
+
+                          <?php 
+                           //  $sql = "SELECT * FROM withdrawrequests WHERE withdrawaddr = ? ";
+                          // withdraw tables structure = id, req_date, amount, method (PayPal, MercadoPago, Saque Bancário), payat (ou status) and withdrawaddr |
+                           //     $result = $conn ->query($sql);
+                          // if (isset($_SESSION['logado'])) {
+                          //  if($result ->num_rows > 0){
+                           //   while($row = $result ->fetch_assoc()){
+                             //   echo $row['id'];
+                            //  }
+                       //     }
+                         // }
+
+                          ?>
                           <div class="stats">
                           
                           </div>

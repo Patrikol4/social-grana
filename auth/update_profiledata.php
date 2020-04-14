@@ -1,19 +1,21 @@
 <?php 
 session_start();
-
 require_once "../conn.php";
 
-$_SESSION['username'] = '';
+?>
 
+<?php 
 
+ 
 
+ 
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-  <title>Perfil de Usuario</title>
+  <title>Editar Perfil</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -129,14 +131,14 @@ $_SESSION['username'] = '';
                         if(isset($_SESSION['logado'])) {
                             echo $_SESSION['username'] . " Hoje é dia " . date("d/m/Y");
                           } else {
-                            echo "Não há sessão :/";
+                            echo " Fulano";
                           }?>
                               
                       </p>
                       </h4>
                    
 
-                    <p class="card-category">Suas informações</p>
+                    <p class="card-category">Edite suas informações e após terminar, clique no ícone para salvar.</p>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -148,21 +150,18 @@ $_SESSION['username'] = '';
 
                           <!--Cabeçalho da TABELA-->
                           <tr>
-                            <th>
-                            
-                            ID de Usuário
-                            
-                            </th>
+                         
                             
                             <th>Nome de Usuário</th>
                             <th>E-mail</th>
+                            <th>Mudar senha</th>
                             <th>E-mail para Pagamentos</th>
                             <th>Endereço</th>
-                            <th>Pontos Adquiridos</th>
-                            <th>Referências Adquiridas</th>
-                            <th>Seu código de referência</th>
-                            <th>Alterar Dados</th>
-                            <th>Apagar Dados</th>
+                            
+                            
+                            <th>Ações</th>
+                            
+                            
                           </tr>
 
                         </thead>
@@ -170,64 +169,45 @@ $_SESSION['username'] = '';
                          
                         <!--Início do Corpo da Tabela-->
                         <tbody>
+                          <form action="update_profiledata.php">
                         <?php 
                           // Exibindo os dados do MySQL diretamente na página
                         ?>
                         <tr>
                         <?php 
                           // Aplicar sistema CRUD abaixo!
-                        $sqlone = "SELECT id FROM users WHERE id = 1";
+                        $sqlone = "SELECT username FROM users WHERE id = 1";
                         $result = $conn-> query($sqlone);
                      
                         ?>
                         <td>
-                        <?php 
 
-                          // ID
-                          if(isset($_SESSION['logado'])){
-                            if($result ->num_rows > 0){
-                              while($row = $result ->fetch_assoc()){
-                                echo "Seu ID : ". $row['id']; 
-                              }
-                            } 
-                          }
-                           else {
-                            echo "Sem dados.";
-                            }
-                          ?>
+                        <input type="text" class="form-control" name="username" placeholder="">
                         </td>
                         <td>
 
                         <?php 
-                          $sql = "SELECT username FROM users WHERE id = 1";
+                          $sql = "SELECT usermail FROM users WHERE id = 1";
                           $result = $conn -> query($sql);
-
-                          if(isset($_SESSION['logado'])){
-                            if($result ->num_rows > 0){
-                              while($row = $result ->fetch_assoc()) {
-                                echo $row['username'];
-
-                              }
-                            }
-                          }
-
-                        
                         ?>
+
+                        <input type="text" class="form-control" name="usermail" placeholder="">
+
                        
                         </td>
                         
                         <td>
                         <?php 
-                        $sql = "SELECT usermail FROM users WHERE id = 1";
+                        $sql = "SELECT userpass FROM users WHERE id = 1";
                         $result = $conn -> query($sql);
-                          if(isset($_SESSION['logado'])){
-                            if($result -> num_rows > 0){
-                              while($row = $result ->fetch_assoc()) {
-                                echo $row ['usermail'];
-                              }
-                            }
-                          }
+
                           ?>
+
+                      <input type="password" class="form-control" name="" 
+                      placeholder="<?php 
+                        if(isset($_SESSION['logado'])){
+                      echo '$row['.  'userpass'. ']'; } ?>">
+
                         
                         </td>
                         
@@ -243,7 +223,8 @@ $_SESSION['username'] = '';
                           }
                         }
                         ?>
-                      
+                      <input type="text" class="form-control" name="withdrawaddr" placeholder="">
+
                        
                         </td>
                         <td>
@@ -258,40 +239,33 @@ $_SESSION['username'] = '';
                           }
                         }
                         ?>
+                        <input type="text" class="form-control" name="address" placeholder="">
                         
                        
                         </td>
 
                         <?php 
-                          $sql = "SELECT balance FROM users WHERE id = 1";
-                          $result = $conn->query($sql);
+                            
+                          // $update = "UPDATE * FROM users"; 
                         ?>
                         <td>
+
+
                         <?php
                           // Pontos adquiridos
-                          
-                          if($result->num_rows >0){
-                            while($row = $result->fetch_assoc()) {
-                              echo  $row['balance'] . 
-                              '<i class="material-icons">' .'<a href="user_points.php">'. 'info' . '</a>'.' </i>';
-                              //echo '<a href="user_points.php"> PTS</a>';
-                              
-                            }
-                          }
-                          else {
-                              echo "Pontos só serão mostrados para usuários logados";}?>
+                       
+                          ?>
                         
                         </td>
                         <td> 
                         <?php
-                        
-                                echo "NULO ";
+                          // Funcao update
+                          echo "<a class='btn btn-info btn-round' href='change_profiledata.php'>" . " Salvar Tudo"
+                          ."<i class='material-icons'>"."done_all"."</i>"."</a>";
                             
                          ?>
                         
                       
-                        <a href="user_refferals.php">
-                        <i class="material-icons">people_alt</i>
                         
 
                         </a>
@@ -299,37 +273,28 @@ $_SESSION['username'] = '';
 
                         <td>
                           <?php 
-                          $generate = mt_rand(2,4);
-
-                          $sql = "SELECT refcode FROM users WHERE id = 1";
-                          $result = $conn -> query($sql);
-                              if(isset($_SESSION['logado'])){
-                                if($result ->num_rows == 0){
-                                  while ($row = $result->fetch_assoc()) {
-                                    echo "Clique no ícone ao lado para gerar ";
-                                  }
-                              } else {
-                                $record_ref = "UPDATE users SET refcode WHERE id = 1 AND refcode = '{$generate}'";
-                                  echo $row['refcode'];
-                              }
-                            }
+                          
+                          echo "
+                          <a class='btn btn-warning btn-round' href='gen_my_refcode.php'>". " Voltar ".
+                          "<i class='material-icons'>"."cancel"."</i>".
+                          "</a>"
                           
                           ?>
-                        <a href="gen_my_refcode.php">
-                        <i class="material-icons">file_copy</i>
+                        
                         </a>                
                         </td>
                         <td>
                           <?php 
-                            echo 
-                            "<a href='#'>" .
+                           /* echo 
+                            "<a class='btn btn-danger btn-round' href='#'>" . " Editar ".
                             "<i class='material-icons'>" . "build" . "</i>" . "</a>";
+                          */
                           ?>
                         </td>
 
                         <td>
                           <?php 
-                            echo "<a href='#'>" .
+                            echo "<a class='btn btn-danger btn-round' href='#'>" . "Deletar conta ".
                             "<i class='material-icons'>" . "delete" ."</i>" . "</a>";
                           ?>
 
@@ -341,7 +306,7 @@ $_SESSION['username'] = '';
                         
                         
                         
-                          
+                          </form>
                         </tbody>
                       </table>
                     </div>

@@ -1,9 +1,10 @@
 <?php 
-
+include_once "start_session.php";
 require_once "../conn.php";
 // Iniciando sessão
 
 $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
+
 
 ?>
 
@@ -83,8 +84,9 @@ $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
                                     <input type="password" name="userpass" class="form-control" placeholder="">
                                     <button type="submit" class="btn btn-fill btn-info btn-block">Login</button>
                                     
-                                    <button href="register.php" class="btn btn-fill btn-danger btn-block">Criar conta</button>
+                                    
                                 </form>
+                                    
                                 <div class="forgot">
                                     <a href="forgotpassword.php" class="btn btn-simple btn-danger">Esqueceu sua senha?</a>
                                 </div>
