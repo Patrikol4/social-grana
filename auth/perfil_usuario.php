@@ -162,7 +162,7 @@ $_SESSION['username'] = '';
                             <th>Referências Adquiridas</th>
                             <th>Seu código de referência</th>
                             <th>Alterar Dados</th>
-                            <th>Apagar Dados</th>
+                            <th>Deletar Conta</th>
                           </tr>
 
                         </thead>
@@ -272,8 +272,7 @@ $_SESSION['username'] = '';
                           
                           if($result->num_rows >0){
                             while($row = $result->fetch_assoc()) {
-                              echo  $row['balance'] . 
-                              '<i class="material-icons">' .'<a href="user_points.php">'. 'info' . '</a>'.' </i>';
+                              echo  $row['balance'] ;
                               //echo '<a href="user_points.php"> PTS</a>';
                               
                             }
@@ -284,9 +283,9 @@ $_SESSION['username'] = '';
                         </td>
                         <td> 
                         <?php
-                        
+                          if(isset($_SESSION['logado'])){
                                 echo "NULO ";
-                            
+                            }
                          ?>
                         
                       
@@ -322,15 +321,15 @@ $_SESSION['username'] = '';
                         <td>
                           <?php 
                             echo 
-                            "<a href='#'>" .
-                            "<i class='material-icons'>" . "build" . "</i>" . "</a>";
+                            "<button class='btn btn-warning btn-round'"."<a href='#'>" .
+                            "<i class='material-icons'>" . "build" . "</i>" . "</a>" ."</button>";
                           ?>
                         </td>
 
                         <td>
                           <?php 
-                            echo "<a href='#'>" .
-                            "<i class='material-icons'>" . "delete" ."</i>" . "</a>";
+                            echo "<button class='btn btn-danger btn-round'" . "<a href='#'>" .
+                            "<i class='material-icons'>" . "delete" ."</i>" . "</a>" . "</button>";
                           ?>
 
                         </td>

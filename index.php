@@ -35,7 +35,7 @@ include "header.php";
 <body>
 
 
-	<div class="wrapper">
+	<div class='wrapper'>
         <div class="landing-header" style="background-image: url('assets/paper_img/cat.jpg');">
             <div class="container">
                 <div class="motto">
@@ -52,7 +52,7 @@ include "header.php";
             <div class="section text-center landing-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
+                        <div class='col-md-8 col-md-offset-2'>
                             <h2>Primeira plataforma BRASILEIRA do ramo</h2>
                             <h5>Claramente inspirado no famoso BuzzBreak, nossa equipe pensou em trazer o melhor dos apps deste nicho a fim de atender a todas as necessidades daqueles que, como nós, são empreendedores natos e buscam a cada dia mais oportunidades e alternativas para renda extra. Sinta-se em casa e aproveite o máximo de nossa plataforma.</h5>
                             <br />

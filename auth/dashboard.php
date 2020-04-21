@@ -269,7 +269,7 @@ new Chart(document.getElementById("bar-chart1"), {
                 <h4 class="card-title">
                 Acompanhe aqui as atualizações referentes a nossa plataforma em primeira mão.
                 </h4>
-              
+                <p>Atualização #1 </p>
               </div>
             </div>
 

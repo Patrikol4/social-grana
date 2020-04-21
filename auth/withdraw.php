@@ -195,7 +195,8 @@
                       </div> <!--Card Footer close-->
                       <button class="btn btn-success btn-block">
                         <i class="material-icons">local_atm</i>
-                      Pedir Saque</button>
+                        <a href="create_withdrawreq.php">
+                      Pedir Saque</a></button>
                     </div>
 
                   </div>
@@ -229,11 +230,12 @@
                                     <th>
 
                                     <?php 
-                                      $sql = "SELECT * FROM withdrawaddr WHERE id = 1";
+                                    // ID 
+                                      $sql = "SELECT id FROM withdrawaddr WHERE user_id = 1";
                                        $result = $conn->query($sql);
 
                                        if(isset($_SESSION['logado'])) {
-                                          if($result -> num_rows > 0){
+                                          if($result->num_rows > 0){
                                             while($row = $result -> fetch_assoc()){
                                               echo $row['id'];
                                             }
@@ -246,17 +248,17 @@
                                     </th>
                                     <th>
                                       <?php 
-                                        $sql = "SELECT withdrawaddr FROM withdrawrequests WHERE id = 1";
+                                        $sql = "SELECT withdrawaddr FROM withdrawrequests WHERE user_id = 1";
                                         $result = $conn->query($sql);
-                                          if(isset($_SESSION['logado'])) {
-                                            if($result -> num_rows > 0) {
-                                              while($row = $result -> fetch_assoc()) {
-                                                echo $row['withdrawaddr'];
-                                              }
-                                            } else { echo "Não existem registros a serem mostrados"; //exit();
+
+                                        if($_SESSION['logado']){
+                                          if($result->num_rows > 0){
+                                            while($row = $result ->fetch_assoc()){
+                                            echo $row['withdrawaddr'];
+                                            }
                                           }
-                                        } else { echo "NaN" ; }
-                                      ?>
+                                        }
+                                        ?>
                                     <!--recebimento@gmail.com-->
 
                                     </th>
@@ -272,7 +274,22 @@
                                         done_all
                                       </i>
                                     </th>
-                                    <th>Nubank</th>
+                                    <th>
+
+
+                                      <?php
+
+
+                                      $sql = "SELECT * FROM withdrawrequests";
+                                      $result = $conn->query($sql); 
+                                      if($_SESSION['logado']){
+                                        if($result->num_rows > 0){
+                                            echo "Nubank";
+                                          }
+                                        }
+
+                                      ?>
+                                    </th>
                                   </tr>
 
                                   <tr>
@@ -292,7 +309,7 @@
                                     <th>recebimento@gmail.com</th>
                                     <th>R$ 300,00</th>
                                     <th>11/04/2020</th>
-                                    <th>Cancelada pelo administrador
+                                    <th>Cancelada
                                       <i class="material-icons">error_outline</i>
                                     </th>
                                     <th>PayPal</th>
@@ -308,19 +325,7 @@
                           
                         <div class="card-footer">
 
-                          <?php 
-                           //  $sql = "SELECT * FROM withdrawrequests WHERE withdrawaddr = ? ";
-                          // withdraw tables structure = id, req_date, amount, method (PayPal, MercadoPago, Saque Bancário), payat (ou status) and withdrawaddr |
-                           //     $result = $conn ->query($sql);
-                          // if (isset($_SESSION['logado'])) {
-                          //  if($result ->num_rows > 0){
-                           //   while($row = $result ->fetch_assoc()){
-                             //   echo $row['id'];
-                            //  }
-                       //     }
-                         // }
-
-                          ?>
+                         
                           <div class="stats">
                           
                           </div>
