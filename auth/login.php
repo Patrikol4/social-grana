@@ -4,8 +4,8 @@ require_once "../conn.php";
 // Iniciando sessão
 
 $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
-
-
+$username = '';
+$_SESSION['username'] = $username;
 ?>
 
 <!DOCTYPE html>

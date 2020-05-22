@@ -1,13 +1,22 @@
 <?php 
 session_start();
-
 require_once "../conn.php";
-
-$_SESSION['username'] = '';
-
-
-
+$_SESSION['logado'];
 ?>
+
+<?php 
+
+$query = "SELECT username, usermail, address, withdrawaddr, balance WHERE username = '".$_SESSION['username']. "'";
+
+if($result = $conn->query($query))
+{
+    while($row = $result->fetch_assoc())
+    {
+    
+   
+?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -126,7 +135,10 @@ $_SESSION['username'] = '';
                       <p>Bem-vindo novamente, 
                       
                       <?php 
-                        if(isset($_SESSION['logado'])) {
+
+                      
+
+                          if(isset($_SESSION['username'])) {
                             echo $_SESSION['username'] . " Hoje é dia " . date("d/m/Y");
                           } else {
                             echo "Não há sessão :/";
@@ -171,45 +183,23 @@ $_SESSION['username'] = '';
                         <!--Início do Corpo da Tabela-->
                         <tbody>
                         <?php 
-                          // Exibindo os dados do MySQL diretamente na página
+                           
                         ?>
                         <tr>
-                        <?php 
-                          // Aplicar sistema CRUD abaixo!
-                        $sqlone = "SELECT id FROM users WHERE id = 1";
-                        $result = $conn-> query($sqlone);
-                     
-                        ?>
+                        
                         <td>
                         <?php 
 
                           // ID
-                          if(isset($_SESSION['logado'])){
-                            if($result ->num_rows > 0){
-                              while($row = $result ->fetch_assoc()){
-                                echo "Seu ID : ". $row['id']; 
-                              }
-                            } 
-                          }
-                           else {
-                            echo "Sem dados.";
-                            }
+                            echo $row['id'];
                           ?>
                         </td>
                         <td>
 
                         <?php 
-                          $sql = "SELECT username FROM users WHERE id = 1";
-                          $result = $conn -> query($sql);
+                          // Username
 
-                          if(isset($_SESSION['logado'])){
-                            if($result ->num_rows > 0){
-                              while($row = $result ->fetch_assoc()) {
-                                echo $row['username'];
-
-                              }
-                            }
-                          }
+                          echo $row['username'];
 
                         
                         ?>
@@ -218,74 +208,41 @@ $_SESSION['username'] = '';
                         
                         <td>
                         <?php 
-                        $sql = "SELECT usermail FROM users WHERE id = 1";
-                        $result = $conn -> query($sql);
-                          if(isset($_SESSION['logado'])){
-                            if($result -> num_rows > 0){
-                              while($row = $result ->fetch_assoc()) {
-                                echo $row ['usermail'];
-                              }
-                            }
-                          }
+                        // Usermail
+                          echo $row['usermail'];
                           ?>
                         
                         </td>
                         
                         <td>
                         <?php 
-                          $sql = "SELECT withdrawaddr FROM users WHERE id = 1";
-                          $result = $conn ->query($sql);
-                            if(isset($_SESSION['logado'])) {
-                              if($result-> num_rows > 0){
-                                while($row = $result -> fetch_assoc()){
-                              echo $row['withdrawaddr'];
-                            }
-                          }
-                        }
+                        
+                       
                         ?>
                       
                        
                         </td>
                         <td>
                         <?php 
-                          $sql = "SELECT address FROM users WHERE id = 1";
-                          $result = $conn ->query($sql);
-                            if(isset($_SESSION['logado'])) {
-                              if($result -> num_rows > 0){
-                                while($row = $result -> fetch_assoc()){
-                                  echo $row['address'];
-                            }
-                          }
-                        }
+                         
                         ?>
                         
                        
                         </td>
 
                         <?php 
-                          $sql = "SELECT balance FROM users WHERE id = 1";
-                          $result = $conn->query($sql);
+                          
                         ?>
                         <td>
                         <?php
                           // Pontos adquiridos
                           
-                          if($result->num_rows >0){
-                            while($row = $result->fetch_assoc()) {
-                              echo  $row['balance'] ;
-                              //echo '<a href="user_points.php"> PTS</a>';
-                              
-                            }
-                          }
-                          else {
-                              echo "Pontos só serão mostrados para usuários logados";}?>
+                         ?>
                         
                         </td>
                         <td> 
                         <?php
-                          if(isset($_SESSION['logado'])){
-                                echo "NULO ";
-                            }
+                         
                          ?>
                         
                       
@@ -298,21 +255,7 @@ $_SESSION['username'] = '';
 
                         <td>
                           <?php 
-                          $generate = mt_rand(2,4);
-
-                          $sql = "SELECT refcode FROM users WHERE id = 1";
-                          $result = $conn -> query($sql);
-                              if(isset($_SESSION['logado'])){
-                                if($result ->num_rows == 0){
-                                  while ($row = $result->fetch_assoc()) {
-                                    echo "Clique no ícone ao lado para gerar ";
-                                  }
-                              } else {
-                                $record_ref = "UPDATE users SET refcode WHERE id = 1 AND refcode = '{$generate}'";
-                                  echo $row['refcode'];
-                              }
-                            }
-                          
+                         
                           ?>
                         <a href="gen_my_refcode.php">
                         <i class="material-icons">file_copy</i>
@@ -338,7 +281,16 @@ $_SESSION['username'] = '';
 
                         
                         
-                        
+                        <?php 
+
+                          }
+                        $result->free();
+                            }
+                              else
+                            {
+                            echo "No results found";
+                            }
+                        ?>
                         
                           
                         </tbody>

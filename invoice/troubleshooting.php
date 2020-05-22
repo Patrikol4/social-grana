@@ -14,7 +14,7 @@
 	<title>Suporte Técnico</title>
 </head>
 <body>
-	<div class="content">
+	<div class="container">
 	</div>
 </body>
 </html>

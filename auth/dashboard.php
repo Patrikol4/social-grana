@@ -2,8 +2,10 @@
 session_start();
 require_once "../conn.php";
 
+?>
 
-$isLoggedin = $_SESSION['logado'];
+<?php 
+
 ?>
 
 <!doctype html>
@@ -41,7 +43,7 @@ $isLoggedin = $_SESSION['logado'];
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="javascript:void(0)">
+            <a class="nav-link" href="dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>Painel de Controle</p>
             </a>
@@ -122,7 +124,7 @@ $isLoggedin = $_SESSION['logado'];
           <p>
             <?php 
            $ip = $_SERVER['REMOTE_ADDR']; // Mostra o IP do usuário
-              echo "Bem vindo, seu IP atual é o  " . $ip;
+              echo "Bem vindo " .$_POST['username']."seu IP atual é o  " . $ip;
            ?>
            </p>
           

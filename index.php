@@ -39,7 +39,7 @@ include "header.php";
         <div class="landing-header" style="background-image: url('assets/paper_img/cat.jpg');">
             <div class="container">
                 <div class="motto">
-                    <h1 class="title-uppercase">Faça dinheiro gratuitamente aqui!</h1>
+                    <h1 class="title-uppercase">Faça dinheiro aqui!</h1>
                     <h3>De usuários para usuários. 100% amigável!</h3>
                     <h4>Pagamos na segunda semana de cada mês</h4>
                     <br />
