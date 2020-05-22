@@ -52,10 +52,10 @@ $_SESSION['username'] = $username;
         <div class="collapse navbar-collapse" id="navigation-example-2">
           <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="troubleshooting.php" class="btn btn-simple">Suporte técnico</a>
+                <a href="../invoice/troubleshooting.php" class="btn btn-simple">Suporte técnico</a>
             </li>
             <li>
-                <a href="..invoice/financeiro.php" class="btn btn-simple">Financeiro</a>
+                <a href="../invoice/financeiro.php" class="btn btn-simple">Financeiro</a>
             </li>
             <li>
                 <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-twitter"></i></a>
