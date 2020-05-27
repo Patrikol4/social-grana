@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html class="perfect-scrollbar-on">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,35 +13,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
     <link href="css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-
-
-
-    <script>
-                            
-                            function formatPoints() {
-                              var field = document.getElementById('value');
-                              var value = field.value;
-
-                              value = value + '';
-                              value = parseInt(value.replace(/[\'D']+/g, ''));
-                              value = value + '';
-                              value = value.replace(/([0-9]{2})$/g, ",$");
-                              if(value.length > 6){
-                                value = value.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1, $2");
-                              }
-                            }
-
-                          </script>
 </head>
 <body class="dark-edition">
     
 <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
-      <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-  -->
       <div class="logo">
         <a href="../index.php" class="simple-text logo-normal">
           SocialGrana
@@ -50,8 +26,8 @@
 
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item  ">
-            <a class="nav-link" href="javascript:void(0)">
+          <li class="nav-item ">
+            <a class="nav-link" href="dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>Painel de Controle</p>
             </a>
@@ -356,20 +332,20 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js"></script>
-  <script src="./assets/js/core/popper.min.js"></script>
-  <script src="./assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="js/core/jquery.min.js"></script>
+  <script src="js/core/popper.min.js"></script>
+  <script src="js/core/bootstrap-material-design.min.js"></script>
   <script src="https://unpkg.com/default-passive-events"></script>
-  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
   <!-- Chartist JS -->
-  <script src="./assets/js/plugins/chartist.min.js"></script>
+  <script src="js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/material-dashboard.js?v=2.1.0"></script>
+  <script src="js/material-dashboard.js?v=2.1.0"></script>
     
 
     

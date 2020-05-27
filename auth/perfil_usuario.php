@@ -4,22 +4,8 @@ require_once "../conn.php";
 $_SESSION['logado'];
 ?>
 
-<?php 
-
-$query = "SELECT username, usermail, address, withdrawaddr, balance WHERE username = '".$_SESSION['username']. "'";
-
-if($result = $conn->query($query))
-{
-    while($row = $result->fetch_assoc())
-    {
-    
-   
-?>
-
-
-
 <!doctype html>
-<html lang="en">
+<html class="perfect-scrollbar-on">
 
 <head>
   <title>Perfil de Usuario</title>
@@ -135,15 +121,11 @@ if($result = $conn->query($query))
                       <p>Bem-vindo novamente, 
                       
                       <?php 
-
-                      
-
                           if(isset($_SESSION['username'])) {
                             echo $_SESSION['username'] . " Hoje é dia " . date("d/m/Y");
                           } else {
                             echo "Não há sessão :/";
-                          }?>
-                              
+                          }?>                             
                       </p>
                       </h4>
                    
@@ -191,7 +173,7 @@ if($result = $conn->query($query))
                         <?php 
 
                           // ID
-                            echo $row['id'];
+                          
                           ?>
                         </td>
                         <td>
@@ -199,7 +181,7 @@ if($result = $conn->query($query))
                         <?php 
                           // Username
 
-                          echo $row['username'];
+                        
 
                         
                         ?>
@@ -209,7 +191,7 @@ if($result = $conn->query($query))
                         <td>
                         <?php 
                         // Usermail
-                          echo $row['usermail'];
+                         
                           ?>
                         
                         </td>
@@ -281,16 +263,7 @@ if($result = $conn->query($query))
 
                         
                         
-                        <?php 
-
-                          }
-                        $result->free();
-                            }
-                              else
-                            {
-                            echo "No results found";
-                            }
-                        ?>
+                        
                         
                           
                         </tbody>
@@ -313,20 +286,20 @@ if($result = $conn->query($query))
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js"></script>
-  <script src="./assets/js/core/popper.min.js"></script>
-  <script src="./assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="js/core/jquery.min.js"></script>
+  <script src="js/core/popper.min.js"></script>
+  <script src="js/core/bootstrap-material-design.min.js"></script>
   <script src="https://unpkg.com/default-passive-events"></script>
-  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   
   <!-- Chartist JS -->
-  <script src="./assets/js/plugins/chartist.min.js"></script>
+  <script src="js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/material-dashboard.js?v=2.1.0"></script>
+  <script src="js/material-dashboard.js?v=2.1.0"></script>
 
     
  
