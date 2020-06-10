@@ -5,4 +5,9 @@ function RedirecTo($Homepage){
 	exit;
 }
 
+function onCookies(){
+	$GLOBALS['username'];
+	
+}
+
 ?>

@@ -88,15 +88,8 @@ $userpass = "";
 
                                 <form class="register-form" action="verify_register.php" method="POST">
 
-                                
-
-
                                     <label>Seu Email</label>
-
                                     <input type="text" class="form-control" name="username" value="<?php echo $username; ?>">
-
-                                    
-
                                     <label>Sua senha</label>
 
                                     <input type="password" name="userpass" class="form-control" value="<?php echo $userpass;?>">
@@ -106,19 +99,9 @@ $userpass = "";
                                     <input type="text" name="" class="form-control" value="">
                                     <br>
                                     <div class="g-recaptcha" data-sitekey="6LdSWuQUAAAAABVRvlTwZzEvHQw88Pbykt14jLw6"></div>
-
-
-
-
-                                    
+  
                                     <button type="submit" name="reg_user" class="btn btn-fill btn-info btn-block">Criar conta</button>
                                 </form>
-                                
-                                <?php 
-
-                                    
-                            
-                                ?>
 
                             </div>
                         </div>

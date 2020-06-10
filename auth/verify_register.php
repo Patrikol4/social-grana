@@ -3,13 +3,9 @@ session_start();
 require "../conn.php";
 
 
-//if(isset($_GET['ref'] =/= '?' $_SESSION['ref'] = $_GET['ref'] > $_SESSION['ref'] =  ));
     
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
-
-    // $refurl = $_GET['ref'] || $_SESSION['ref'];
-
 
     // Erro 1
     if(empty($username) || empty($userpass)){
@@ -43,6 +39,8 @@ require "../conn.php";
             // Erro 6
             else {
                 $sql = "INSERT INTO users (username, userpass) VALUES (?, ?)"; // regdate ???
+                // obs : a data de criação dos usuários será adicionada automaticamente
+                // com o timestamp no banco de dados diretamente.
                 $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)){
                         header("Location: register.php?error=sqlerrors");

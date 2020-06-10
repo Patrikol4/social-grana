@@ -1,6 +1,10 @@
 <?php 
     session_start();
+
+
     require_once "../conn.php";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +95,7 @@
                 <a class="nav-link" href="javascript:void(0)">
                   <i class="material-icons">notifications</i>
                   <p class="d-lg-none d-md-block">
-                    Notifications
+                    Notificações
                   </p>
                 </a>
               </li>
@@ -107,18 +111,22 @@
           <!-- your content here -->
           <p>
             <?php 
-              $sql = "SELECT balance FROM users WHERE id = 1";
+            // Seleciona o campo balance de usuarios onde o username é igual o da sessão atual
+              $sql = "SELECT balance FROM users WHERE id = '{$_SESSION['username']}'";
            ?>
              
            </p>
            <h3>Fique á vontade para fazer seu saque</h3>
-           <h4>Pontos disponíveis : 
-           <?php $result = $conn->query($sql); if(isset($_SESSION['logado'])) { if($result ->num_rows > 0){
-              while($row = $result ->fetch_assoc()){
-                echo $row['balance'];
-                  }
-                }
-              } else { echo "NaN";} ?> </h4>
+           <h4>Pontos disponíveis: 
+           <?php 
+            // Chama a coluna onde está localizada o balance do usuario
+
+
+
+
+
+
+           ?> </h4>
 
             
             
@@ -142,28 +150,19 @@
                           <i class="material-icons">attach_money</i>
                         </p>
                         <!--Formas de saque / conversão abaixo -->
-                        <?php ?>
+                        
                       
                       <div class="card-footer">
-                        <div class="stats">
-                         
-                        
-                        </div> <!--Stats Close-->
-                        <!--
-                        <button class="btn btn-success btn-block" onclick="md.showNotification('top', 'center')">
-                        <i class="material-icons">attach_money</i>
-                        <a href="#">Converter Pontos</a> 
-                      <div class="ripple-container"></div>
-                  </button>-->
-                      
+                        <label class="bmd label-floating">Quantia mínima de retirada : 50 pontos</label> 
+                        <div class="stats"> 
+                          Atualmente, só pedidos via PayPal estão sendo aceitos!
+                        </div>
 
+                        
+
+                         
                           
-                          <select class="form-control">
-                            <option>MercadoPago</option>
-                            <option>Nubank</option>>
-                          </select>
                           
-                          <input class="form-control" id="value" type="text" onkeyup="formatPoints();" placeholder="Quantia mínima de retirada : 50 pontos">
 
                           
                                                    
@@ -207,27 +206,16 @@
 
                                     <?php 
                                     // ID 
-                                      $sql = "SELECT id FROM withdrawaddr WHERE user_id = 1";
-                                       $result = $conn->query($sql);
-
-                                       if(isset($_SESSION['logado'])) {
-                                          if($result->num_rows > 0){
-                                            while($row = $result -> fetch_assoc()){
-                                              echo $row['id'];
-                                            }
-                                          } 
-                                        } else { echo "NaN"; }
-
+                                      
                                     ?>
 
 
                                     </th>
                                     <th>
                                       <?php 
-                                        $sql = "SELECT withdrawaddr FROM withdrawrequests WHERE user_id = 1";
-                                        $result = $conn->query($sql);
+                                        
 
-                                        if($_SESSION['logado']){
+                                        if($_SESSION['username']){
                                           if($result->num_rows > 0){
                                             while($row = $result ->fetch_assoc()){
                                             echo $row['withdrawaddr'];
